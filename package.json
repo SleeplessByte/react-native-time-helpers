@@ -27,6 +27,7 @@
   "files": [
     "index.ts",
     "index.d.ts",
+    "index.d.ts.map",
     "index.es.js",
     "index.cjs.js"
   ]
