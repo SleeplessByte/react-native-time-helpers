@@ -18,7 +18,9 @@
   "peerDependencies": {
     "react-native": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "devDependencies": {
     "@types/react-native": "^0.62.10",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",

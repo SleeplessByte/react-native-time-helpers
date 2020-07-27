@@ -27,37 +27,65 @@ const MONTH_NAMES = [
   'December',
 ];
 
-export function localeLongWeekDayString(date: Date) {
+export type Options = {
+  longDayNames: typeof LONG_DAY_NAMES;
+  shortDayNames: typeof DAY_NAMES;
+  monthNames: typeof MONTH_NAMES;
+};
+
+const DEFAULTS: Options = {
+  longDayNames: LONG_DAY_NAMES,
+  shortDayNames: DAY_NAMES,
+  monthNames: MONTH_NAMES,
+};
+
+export function localeLongWeekDayString(
+  date: Date,
+  { longDayNames }: Pick<Options, 'longDayNames'> = DEFAULTS
+) {
   if (IS_ANDROID) {
-    return LONG_DAY_NAMES[date.getDay()];
+    return longDayNames[date.getDay()];
   }
 
   return date.toLocaleDateString(undefined, { weekday: 'long' });
 }
 
-export function localeWeekDayString(date: Date) {
+export function localeWeekDayString(
+  date: Date,
+  { shortDayNames }: Pick<Options, 'shortDayNames'> = DEFAULTS
+) {
   if (IS_ANDROID) {
-    return DAY_NAMES[date.getDay()];
+    return shortDayNames[date.getDay()];
   }
 
   return date.toLocaleDateString(undefined, { weekday: 'short' });
 }
 
-export function localeDateString(date: Date) {
+export function localeDateString(
+  date: Date,
+  showWeekDay = true,
+  showYear = true,
+  {
+    shortDayNames,
+    monthNames,
+  }: Pick<Options, 'shortDayNames' | 'monthNames'> = DEFAULTS
+) {
   if (IS_ANDROID) {
-    const weekDay = DAY_NAMES[date.getDay()];
-    const month = MONTH_NAMES[date.getMonth()];
+    const weekDay = shortDayNames[date.getDay()];
+    const month = monthNames[date.getMonth()];
     const day = date.getDate();
     const year = date.getFullYear();
 
-    return `${weekDay}, ${day} ${month} ${year}`;
+    let result = showWeekDay ? `${weekDay}, ` : '';
+    result = `${result}${day} ${month}`;
+    return showYear ? `${result} ${year}` : result;
   }
 
   return date.toLocaleDateString(undefined, {
     day: 'numeric',
-    year: 'numeric',
+    year: showYear ? 'numeric' : undefined,
     month: 'long',
-    weekday: 'short',
+    weekday: showWeekDay ? 'short' : undefined,
   });
 }
 
