@@ -1,6 +1,6 @@
 {
   "name": "react-native-time-helpers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Derk-Jan Karrenbeld <derk-jan@delftsolutions.nl>",
   "license": "MIT",
   "description": "Time helpers for consistency across platforms when using react-native, for en-GB locale",
