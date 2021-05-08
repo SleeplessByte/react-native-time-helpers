@@ -39,6 +39,13 @@ const DEFAULTS: Options = {
   monthNames: MONTH_NAMES,
 };
 
+/**
+ * Return the week day (long) of the given date
+ *
+ * @param date the date
+ * @param options you can override { longDayNames }
+ * @returns the week day
+ */
 export function localeLongWeekDayString(
   date: Date,
   { longDayNames }: Pick<Options, 'longDayNames'> = DEFAULTS
@@ -50,6 +57,13 @@ export function localeLongWeekDayString(
   return date.toLocaleDateString(undefined, { weekday: 'long' });
 }
 
+/**
+ * Return the week day (short) of the given date
+ *
+ * @param date the date
+ * @param options you can override { shortDayNames }
+ * @returns the week day
+ */
 export function localeWeekDayString(
   date: Date,
   { shortDayNames }: Pick<Options, 'shortDayNames'> = DEFAULTS
@@ -61,6 +75,15 @@ export function localeWeekDayString(
   return date.toLocaleDateString(undefined, { weekday: 'short' });
 }
 
+/**
+ * Return the formatted date as string of the given date
+ *
+ * @param date the date
+ * @param showWeekDay if true, prepends the week day (short)
+ * @param showYear if true, appends the year
+ * @param options you can override { shortDayNames, monthNames }
+ * @returns the formatted date as string
+ */
 export function localeDateString(
   date: Date,
   showWeekDay = true,
@@ -89,6 +112,13 @@ export function localeDateString(
   });
 }
 
+/**
+ * Return the formatted time of the given date
+ *
+ * @param date the date
+ * @param showSeconds if true, appends :{seconds}
+ * @returns the formatted time string
+ */
 export function localeTimeString(date: Date, showSeconds = false) {
   if (IS_ANDROID) {
     const hours = date.getHours();
