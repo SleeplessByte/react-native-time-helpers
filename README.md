@@ -10,6 +10,8 @@ However, if your project is in a single language, and you don't need timezone su
 yarn add react-native-time-helpers
 ```
 
+Even though this package is _meant_ for the `react-native` ecosystem, it has bundles for CJS, ES, UMD, and modern browsers.
+
 ## Usage
 
 `toLocaleDateString` has the following helpers:

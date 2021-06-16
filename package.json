@@ -1,36 +1,47 @@
 {
   "name": "react-native-time-helpers",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "author": "Derk-Jan Karrenbeld <derk-jan@delftsolutions.nl>",
   "license": "MIT",
   "description": "Time helpers for consistency across platforms when using react-native, for en-GB locale",
   "private": false,
-  "main": "index.cjs.js",
-  "module": "index.es.js",
+  "type": "module",
+  "source": "index.ts",
+  "exports": "./index.modern.js",
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "unpkg": "./index.umd.js",
+  "react-native": "./index.ts",
   "types": "index.d.ts",
   "scripts": {
-    "build": "yarn build:module && yarn build:main && yarn build:dts",
-    "build:main": "yarn tsc --module commonjs && move .\\index.js .\\index.cjs.js",
-    "build:module": "yarn tsc --module es2015 && move .\\index.js .\\index.es.js",
-    "build:dts": "yarn tsc --declaration --declarationMap --emitDeclarationOnly",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "prepare": "yarn build"
   },
   "peerDependencies": {
     "react-native": "*"
   },
   "dependencies": {
-    "tslib": "^2.2.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@types/react-native": "^0.63.52",
+    "babel-preset-expo": "^8.3.0",
+    "microbundle": "^0.13.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.2"
   },
   "files": [
     "index.ts",
     "index.d.ts",
     "index.d.ts.map",
-    "index.es.js",
-    "index.cjs.js"
+    "index.cjs",
+    "index.cjs.map",
+    "index.mjs",
+    "index.mjs.map",
+    "index.modern.js",
+    "index.modern.js.map",
+    "index.umd.js",
+    "index.umd.js.map"
   ]
 }
