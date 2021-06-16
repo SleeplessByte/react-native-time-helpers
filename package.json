@@ -16,7 +16,9 @@
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "lint": "eslint .",
+    "lint:fix": "eslint ."
   },
   "peerDependencies": {
     "react-native": "*"
@@ -25,9 +27,14 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
     "@types/react-native": "^0.63.52",
     "babel-preset-expo": "^8.3.0",
+    "eslint": "^7.28.0",
+    "eslint-config-universe": "^7.0.1",
     "microbundle": "^0.13.3",
+    "prettier": "^2.3.1",
+    "react": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
     "typescript": "^4.3.2"
   },
